@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>ZAURIVA — Wallpapers for Every Screen</title>
+    <title>ZAURIVA — Your Screen. Your World.</title>
 
     <meta name="description"
-          content="Discover beautiful wallpapers for your phone, tablet and desktop.">
+          content="Discover premium wallpapers for your phone, desktop and every screen.">
 
     <style>
         * {
@@ -16,175 +16,613 @@
             padding: 0;
         }
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #0b0b0b;
-            color: #ffffff;
+        html {
+            scroll-behavior: smooth;
         }
+
+        body {
+            background: #050505;
+            color: #ffffff;
+            font-family: Arial, Helvetica, sans-serif;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
 
         header {
-            padding: 25px 6%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            height: 72px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid #222;
+            justify-content: space-between;
+            padding: 0 5%;
+            background: rgba(5, 5, 5, 0.88);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid #202020;
         }
 
-        .logo {
-            font-size: 25px;
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            font-weight: 600;
+            letter-spacing: 6px;
+        }
+
+        .z-logo {
+            width: 38px;
+            height: 38px;
+            border: 1px solid #777;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
             font-weight: 700;
-            letter-spacing: 4px;
+            letter-spacing: 0;
+        }
+
+        .brand-name {
+            font-size: 19px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 30px;
         }
 
         nav a {
-            color: #ffffff;
-            text-decoration: none;
-            margin-left: 25px;
+            color: #aaa;
             font-size: 14px;
+            transition: 0.25s;
         }
 
-        .hero {
-            text-align: center;
-            padding: 90px 20px 70px;
+        nav a:hover {
+            color: white;
         }
 
-        .hero h1 {
-            font-size: clamp(42px, 7vw, 78px);
-            letter-spacing: -2px;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            color: #a5a5a5;
-            font-size: 17px;
-            margin-bottom: 35px;
-        }
-
-        .search {
-            width: min(600px, 90%);
-            margin: auto;
-            display: flex;
-            background: #151515;
+        .header-search {
+            width: 220px;
+            height: 38px;
             border: 1px solid #292929;
-            border-radius: 50px;
-            padding: 6px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            padding: 0 14px;
+            background: #101010;
         }
 
-        .search input {
-            flex: 1;
+        .header-search span {
+            color: #888;
+            margin-right: 8px;
+        }
+
+        .header-search input {
+            width: 100%;
             border: none;
             outline: none;
             background: transparent;
             color: white;
-            padding: 15px 20px;
-            font-size: 15px;
+            font-size: 12px;
         }
 
-        .search button {
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            position: relative;
+            min-height: 610px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            border-bottom: 1px solid #171717;
+        }
+
+        .hero-background {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(
+                    90deg,
+                    rgba(5,5,5,1) 0%,
+                    rgba(5,5,5,0.88) 28%,
+                    rgba(5,5,5,0.25) 70%,
+                    rgba(5,5,5,0.7) 100%
+                ),
+                linear-gradient(
+                    0deg,
+                    #050505 0%,
+                    transparent 35%,
+                    transparent 75%,
+                    rgba(0,0,0,0.45) 100%
+                ),
+                url("universe-001-v2.jpg");
+
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.9);
+            transform: scale(1.02);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 1250px;
+            margin: auto;
+            padding: 70px 5%;
+        }
+
+        .eyebrow {
+            color: #aaa;
+            font-size: 11px;
+            letter-spacing: 7px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 7vw, 86px);
+            line-height: 0.95;
+            letter-spacing: -4px;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 span {
+            color: #aaa;
+        }
+
+        .hero-description {
+            max-width: 450px;
+            color: #c2c2c2;
+            line-height: 1.7;
+            font-size: 15px;
+            margin-bottom: 30px;
+        }
+
+        .search-box {
+            width: min(500px, 100%);
+            height: 54px;
+            display: flex;
+            align-items: center;
+            border: 1px solid #444;
+            border-radius: 40px;
+            background: rgba(10,10,10,0.75);
+            backdrop-filter: blur(15px);
+            padding: 5px;
+        }
+
+        .search-box input {
+            flex: 1;
+            height: 100%;
             border: none;
+            outline: none;
+            background: transparent;
+            color: white;
+            padding: 0 18px;
+            font-size: 14px;
+        }
+
+        .search-box button {
+            width: 45px;
+            height: 45px;
+            border: none;
+            border-radius: 50%;
             background: white;
             color: black;
-            padding: 0 25px;
-            border-radius: 40px;
-            font-weight: 600;
             cursor: pointer;
+            font-size: 17px;
         }
 
-        section {
-            padding: 50px 6%;
-        }
-
-        .section-title {
+        .tags {
             display: flex;
-            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin-top: 20px;
+        }
+
+        .tag {
+            padding: 9px 15px;
+            border: 1px solid #3b3b3b;
+            background: rgba(10,10,10,0.65);
+            border-radius: 30px;
+            color: #ccc;
+            font-size: 12px;
+        }
+
+        /* =========================
+           FEATURED
+        ========================= */
+
+        .featured-card {
+            position: absolute;
+            z-index: 5;
+            right: 5%;
+            bottom: 70px;
+            width: 300px;
+            padding: 24px;
+            border: 1px solid #3a3a3a;
+            border-radius: 22px;
+            background: rgba(8,8,8,0.78);
+            backdrop-filter: blur(18px);
+            box-shadow: 0 20px 80px rgba(0,0,0,0.5);
+        }
+
+        .featured-label {
+            color: #aaa;
+            font-size: 12px;
+            margin-bottom: 12px;
+        }
+
+        .featured-card h2 {
+            font-size: 25px;
+            margin-bottom: 8px;
+        }
+
+        .featured-card p {
+            color: #999;
+            font-size: 13px;
+            line-height: 1.5;
+            margin-bottom: 18px;
+        }
+
+        .details {
+            display: flex;
+            gap: 7px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .detail {
+            border: 1px solid #333;
+            padding: 6px 9px;
+            border-radius: 20px;
+            color: #bbb;
+            font-size: 10px;
+        }
+
+        .download-button {
+            display: flex;
             align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 14px;
+            border-radius: 30px;
+            background: white;
+            color: black;
+            font-size: 13px;
+            font-weight: 600;
+            transition: 0.25s;
+        }
+
+        .download-button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* =========================
+           SECTIONS
+        ========================= */
+
+        .section {
+            max-width: 1250px;
+            margin: auto;
+            padding: 65px 5%;
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
             margin-bottom: 25px;
         }
 
-        .section-title h2 {
-            font-size: 25px;
+        .section-heading h2 {
+            font-size: 27px;
         }
 
-        .section-title a {
-            color: #aaa;
-            text-decoration: none;
-            font-size: 14px;
+        .section-heading p {
+            color: #777;
+            font-size: 13px;
+            margin-top: 7px;
         }
 
-        .wallpapers {
+        .view-all {
+            color: #999;
+            font-size: 13px;
+        }
+
+        /* =========================
+           WALLPAPER GRID
+        ========================= */
+
+        .wallpaper-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 18px;
+            gap: 16px;
         }
 
-        .wallpaper {
+        .wallpaper-card {
+            position: relative;
             overflow: hidden;
-            border-radius: 14px;
-            background: #151515;
-            cursor: pointer;
+            border-radius: 15px;
+            background: #111;
+            border: 1px solid #222;
+            transition: 0.3s;
         }
 
-        .wallpaper img {
+        .wallpaper-card:hover {
+            transform: translateY(-5px);
+            border-color: #555;
+        }
+
+        .wallpaper-card img {
             width: 100%;
-            height: 300px;
+            aspect-ratio: 9 / 14;
             object-fit: cover;
             display: block;
-            transition: transform 0.4s ease;
         }
 
-        .wallpaper:hover img {
-            transform: scale(1.04);
+        .wallpaper-info {
+            padding: 13px;
+            background: #0c0c0c;
         }
 
-        .categories {
-            display: flex;
+        .wallpaper-info h3 {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .wallpaper-info p {
+            color: #777;
+            font-size: 11px;
+        }
+
+        /* =========================
+           CATEGORY GRID
+        ========================= */
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
             gap: 12px;
-            flex-wrap: wrap;
         }
 
         .category {
-            padding: 13px 20px;
-            border: 1px solid #292929;
-            border-radius: 30px;
-            color: #ddd;
-            text-decoration: none;
-            font-size: 14px;
+            min-height: 125px;
+            border: 1px solid #252525;
+            border-radius: 16px;
+            background: linear-gradient(145deg, #141414, #090909);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            transition: 0.3s;
         }
 
         .category:hover {
-            background: #ffffff;
-            color: #000000;
+            border-color: #555;
+            transform: translateY(-4px);
         }
+
+        .category-icon {
+            font-size: 27px;
+            margin-bottom: auto;
+        }
+
+        .category h3 {
+            font-size: 15px;
+            margin-bottom: 5px;
+        }
+
+        .category span {
+            color: #777;
+            font-size: 11px;
+        }
+
+        /* =========================
+           COMING SOON
+        ========================= */
+
+        .coming-soon {
+            border: 1px solid #252525;
+            border-radius: 20px;
+            padding: 45px;
+            text-align: center;
+            background: linear-gradient(145deg, #101010, #070707);
+        }
+
+        .coming-soon h2 {
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        .coming-soon p {
+            color: #777;
+            font-size: 14px;
+            max-width: 500px;
+            margin: auto;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
 
         footer {
+            border-top: 1px solid #202020;
+            padding: 60px 5% 30px;
             text-align: center;
-            padding: 50px 20px;
-            border-top: 1px solid #222;
-            color: #777;
-            margin-top: 50px;
         }
 
-        @media (max-width: 900px) {
-            .wallpapers {
-                grid-template-columns: repeat(2, 1fr);
-            }
+        .footer-logo {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .footer-z {
+            width: 48px;
+            height: 48px;
+            border: 1px solid #777;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px;
+        }
+
+        .footer-name {
+            letter-spacing: 8px;
+            font-size: 17px;
+        }
+
+        .footer-tagline {
+            color: #555;
+            font-size: 10px;
+            letter-spacing: 4px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 25px 0;
+        }
+
+        .footer-links a {
+            color: #777;
+            font-size: 12px;
+        }
+
+        .copyright {
+            color: #444;
+            font-size: 11px;
+            margin-top: 35px;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 1000px) {
 
             nav {
                 display: none;
             }
-        }
 
-        @media (max-width: 500px) {
-            .wallpapers {
-                grid-template-columns: 1fr;
+            .header-search {
+                display: none;
+            }
+
+            .featured-card {
+                position: relative;
+                right: auto;
+                bottom: auto;
+                width: min(400px, 90%);
+                margin: 0 5% 40px auto;
             }
 
             .hero {
-                padding-top: 60px;
+                display: block;
+                padding-top: 80px;
             }
 
-            .wallpaper img {
-                height: 420px;
+            .hero-content {
+                padding-bottom: 30px;
+            }
+
+            .hero-background {
+                background-position: 60% center;
+            }
+
+            .wallpaper-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .category-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            header {
+                height: 64px;
+            }
+
+            .brand-name {
+                font-size: 16px;
+                letter-spacing: 4px;
+            }
+
+            .z-logo {
+                width: 34px;
+                height: 34px;
+                font-size: 19px;
+            }
+
+            .hero {
+                min-height: 700px;
+            }
+
+            .hero-background {
+                background-position: 62% top;
+                background-size: auto 700px;
+            }
+
+            .hero-content {
+                padding-top: 70px;
+            }
+
+            .hero h1 {
+                font-size: 54px;
+                letter-spacing: -3px;
+            }
+
+            .featured-card {
+                margin-top: 30px;
+            }
+
+            .section {
+                padding-top: 45px;
+                padding-bottom: 45px;
+            }
+
+            .section-heading h2 {
+                font-size: 22px;
+            }
+
+            .wallpaper-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .category {
+                min-height: 110px;
+            }
+
+            .coming-soon {
+                padding: 35px 20px;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
             }
         }
     </style>
@@ -192,105 +630,340 @@
 
 <body>
 
+<!-- =========================
+     HEADER
+========================= -->
+
 <header>
-    <div class="logo">ZAURIVA</div>
+
+    <a href="index.html" class="brand">
+        <div class="z-logo">Z</div>
+        <div class="brand-name">ZAURIVA</div>
+    </a>
 
     <nav>
-        <a href="#">Home</a>
-        <a href="#">Explore</a>
-        <a href="#">Categories</a>
+        <a href="index.html">Home</a>
+        <a href="#trending">Wallpapers</a>
+        <a href="#categories">Categories</a>
+        <a href="#latest">Latest</a>
     </nav>
+
+    <div class="header-search">
+        <span>⌕</span>
+        <input type="text" placeholder="Search wallpapers...">
+    </div>
+
 </header>
 
-<main>
 
-    <section class="hero">
+<!-- =========================
+     HERO
+========================= -->
 
-        <h1>Your screen.<br>Your world.</h1>
+<section class="hero">
 
-        <p>
-            Discover beautiful wallpapers made for every screen.
+    <div class="hero-background"></div>
+
+    <div class="hero-content">
+
+        <div class="eyebrow">
+            WELCOME TO
+        </div>
+
+        <h1>
+            ZAURIVA
+        </h1>
+
+        <p class="hero-description">
+            Discover stunning wallpapers created to transform
+            your screen into something unforgettable.
         </p>
 
-        <div class="search">
+        <div class="search-box">
+
             <input
                 type="text"
-                placeholder="Search wallpapers..."
-            >
+                placeholder="Search wallpapers...">
 
-            <button>Search</button>
+            <button>→</button>
+
         </div>
 
-    </section>
-
-
-    <section>
-
-        <div class="section-title">
-            <h2>Trending Wallpapers</h2>
-            <a href="#">View all →</a>
+        <div class="tags">
+            <span class="tag">4K</span>
+            <span class="tag">Mobile</span>
+            <span class="tag">Desktop</span>
+            <span class="tag">Anime</span>
+            <span class="tag">Nature</span>
+            <span class="tag">Universe</span>
         </div>
 
-        <div class="wallpapers">
+    </div>
 
-            <div class="wallpaper">
-                <img
-    src="universe-001.jpg"
-    alt="Universe wallpaper">
+
+    <!-- FEATURED -->
+
+    <div class="featured-card">
+
+        <div class="featured-label">
+            Featured ✨
+        </div>
+
+        <h2>Universe #001</h2>
+
+        <p>
+            Explore the infinite with the first
+            wallpaper from the ZAURIVA collection.
+        </p>
+
+        <div class="details">
+            <span class="detail">4K</span>
+            <span class="detail">9:16</span>
+            <span class="detail">Mobile</span>
+            <span class="detail">Universe</span>
+        </div>
+
+        <a
+            href="wallpaper.html"
+            class="download-button">
+            ↓ &nbsp; Download Wallpaper
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     TRENDING
+========================= -->
+
+<section class="section" id="trending">
+
+    <div class="section-heading">
+
+        <div>
+            <h2>🔥 Trending Now</h2>
+            <p>Discover the wallpapers people love.</p>
+        </div>
+
+        <span class="view-all">
+            View All →
+        </span>
+
+    </div>
+
+
+    <div class="wallpaper-grid">
+
+        <a href="wallpaper.html" class="wallpaper-card">
+
+            <img
+                src="universe-001-v2.jpg"
+                alt="Universe wallpaper">
+
+            <div class="wallpaper-info">
+                <h3>Universe #001</h3>
+                <p>Cosmic Collection</p>
             </div>
 
-            <div class="wallpaper">
-                <a href="wallpaper.html">
-    <img
-        src="universe-001-v2.jpg"
-        alt="ZAURIVA Universe Wallpaper">
-</a>
+        </a>
+
+
+        <!-- Temporary slots for future wallpapers -->
+
+        <div class="wallpaper-card">
+
+            <div style="
+                aspect-ratio:9/14;
+                background:linear-gradient(145deg,#202020,#090909);
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                color:#555;
+                font-size:12px;">
+                MORE COMING
             </div>
 
-            <div class="wallpaper">
-                <img
-                    src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80"
-                    alt="Nature wallpaper">
-            </div>
-
-            <div class="wallpaper">
-                <img
-                    src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=80"
-                    alt="Landscape wallpaper">
+            <div class="wallpaper-info">
+                <h3>Coming Soon</h3>
+                <p>New collection</p>
             </div>
 
         </div>
 
-    </section>
 
+        <div class="wallpaper-card">
 
-    <section>
+            <div style="
+                aspect-ratio:9/14;
+                background:linear-gradient(145deg,#181818,#070707);
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                color:#555;
+                font-size:12px;">
+                MORE COMING
+            </div>
 
-        <div class="section-title">
-            <h2>Explore Categories</h2>
+            <div class="wallpaper-info">
+                <h3>Coming Soon</h3>
+                <p>New collection</p>
+            </div>
+
         </div>
 
-        <div class="categories">
 
-            <a class="category" href="#">Aesthetic</a>
-            <a class="category" href="#">Nature</a>
-            <a class="category" href="#">Cars</a>
-            <a class="category" href="#">Spiritual</a>
-            <a class="category" href="#">Anime</a>
-            <a class="category" href="#">Gaming</a>
-            <a class="category" href="#">Dark</a>
-            <a class="category" href="#">Minimal</a>
+        <div class="wallpaper-card">
+
+            <div style="
+                aspect-ratio:9/14;
+                background:linear-gradient(145deg,#222,#080808);
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                color:#555;
+                font-size:12px;">
+                MORE COMING
+            </div>
+
+            <div class="wallpaper-info">
+                <h3>Coming Soon</h3>
+                <p>New collection</p>
+            </div>
 
         </div>
 
-    </section>
+    </div>
 
-</main>
+</section>
 
+
+<!-- =========================
+     CATEGORIES
+========================= -->
+
+<section class="section" id="categories">
+
+    <div class="section-heading">
+
+        <div>
+            <h2>✦ Explore Categories</h2>
+            <p>Find your perfect visual style.</p>
+        </div>
+
+    </div>
+
+
+    <div class="category-grid">
+
+        <a href="#" class="category">
+            <div class="category-icon">🌌</div>
+            <h3>Universe</h3>
+            <span>Explore →</span>
+        </a>
+
+        <a href="#" class="category">
+            <div class="category-icon">🏔️</div>
+            <h3>Nature</h3>
+            <span>Explore →</span>
+        </a>
+
+        <a href="#" class="category">
+            <div class="category-icon">✨</div>
+            <h3>Spiritual</h3>
+            <span>Explore →</span>
+        </a>
+
+        <a href="#" class="category">
+            <div class="category-icon">🚗</div>
+            <h3>Cars</h3>
+            <span>Explore →</span>
+        </a>
+
+        <a href="#" class="category">
+            <div class="category-icon">🎮</div>
+            <h3>Gaming</h3>
+            <span>Explore →</span>
+        </a>
+
+        <a href="#" class="category">
+            <div class="category-icon">◈</div>
+            <h3>Aesthetic</h3>
+            <span>Explore →</span>
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     LATEST
+========================= -->
+
+<section class="section" id="latest">
+
+    <div class="section-heading">
+
+        <div>
+            <h2>✦ Latest Uploads</h2>
+            <p>Fresh wallpapers for your screen.</p>
+        </div>
+
+    </div>
+
+
+    <div class="coming-soon">
+
+        <h2>More wallpapers are coming.</h2>
+
+        <p>
+            ZAURIVA is just getting started.
+            New cinematic wallpapers will be added
+            to the collection soon.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
-    © 2026 ZAURIVA — Wallpapers for Every Screen
+    <div class="footer-logo">
+
+        <div class="footer-z">
+            Z
+        </div>
+
+        <div class="footer-name">
+            ZAURIVA
+        </div>
+
+        <div class="footer-tagline">
+            YOUR SCREEN. YOUR WORLD.
+        </div>
+
+    </div>
+
+
+    <div class="footer-links">
+
+        <a href="index.html">Home</a>
+        <a href="#trending">Wallpapers</a>
+        <a href="#categories">Categories</a>
+
+    </div>
+
+
+    <div class="copyright">
+        © 2026 ZAURIVA. All rights reserved.
+    </div>
 
 </footer>
 
